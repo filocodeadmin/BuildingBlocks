@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>BuildingBlocks.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\block_res\block_res.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="block_res">
+      <HintPath>..\block_res\bin\Release\net7.0\block_res.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+</Project>
