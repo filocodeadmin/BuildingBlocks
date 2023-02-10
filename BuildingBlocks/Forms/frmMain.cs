@@ -36,10 +36,7 @@ namespace BuildingBlocks {
 
             ICustomer CustomerProfile = new Customer();
 
-            CustomerProfile.GetCustomers().ForEach(c => {
-
-            });
-
+            
 
         }
 
