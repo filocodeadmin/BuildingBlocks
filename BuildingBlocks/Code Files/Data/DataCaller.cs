@@ -15,7 +15,8 @@ namespace BuildingBlocks.Code_Files.Data {
             bool Result = false;
             ArrayList Parms = new ArrayList() { 
                 new SqlParameter("intRowUID", CustomerProfile.RowUID),
-                new SqlParameter("nvarFirstName", CustomerProfile.FirstName)
+                new SqlParameter("nvarFirstName", CustomerProfile.FirstName),
+                new SqlParameter("nvarLastName", CustomerProfile.LastName)
             };
 
             object Reader = DataConn.GetDataCaller(CommandType.StoredProcedure, "UpdateCustomerSp", DataReturnType.DataReader, Parms);
