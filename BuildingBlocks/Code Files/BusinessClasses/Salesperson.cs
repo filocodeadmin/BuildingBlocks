@@ -6,6 +6,8 @@ namespace BuildingBlocks.Code_Files.BusinessClasses {
 
     internal class Salesperson : SalespersonBase, ISalesperson {
 
+        public string CreatedBy { get; set; } = "";
+
         internal Salesperson() {
             //business logic can be here or in the base
         }

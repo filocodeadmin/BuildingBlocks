@@ -14,9 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="block_res">
-      <HintPath>..\block_res\bin\Release\net7.0\block_res.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\block_res\block_res.csproj" />
   </ItemGroup>
 
 

@@ -6,6 +6,8 @@ namespace BuildingBlocks.Code_Files.BusinessClasses {
 
     internal class Customer : CustomerBase, ICustomer {
 
+        public string CreatedBy { get; set; } = "";
+
         internal Customer() {
             //business logic can be here or in the base
         }

@@ -16,12 +16,13 @@ namespace block_res.Code_Files.Data {
 
             object? Result = null;
 
-            m_MSSQLConnection.ConnectionString = CommandString;
+            m_MSSQLConnection.ConnectionString = m_MSSQLConnStr;
             m_MSSQLConnection.Open();
             m_MSSQLCommand = new SqlCommand();
             m_MSSQLCommand.Connection = m_MSSQLConnection;
             m_MSSQLCommand.CommandType = CommandType;
             m_MSSQLCommand.CommandTimeout = 60;
+            m_MSSQLCommand.CommandText = CommandString;
             for (int i = 0; i < ParmList.Count; ++i) {
                 _ = m_MSSQLCommand.Parameters.Add((SqlParameter)ParmList[i]);
             }

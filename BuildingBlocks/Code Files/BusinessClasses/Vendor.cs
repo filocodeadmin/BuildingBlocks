@@ -6,6 +6,8 @@ namespace BuildingBlocks.Code_Files.BusinessClasses {
 
     internal class Vendor : VendorBase, IVendor {
 
+        public string CreatedBy { get; set; } = "";
+
         internal Vendor() {
             //business logic can be here or in the base
         }

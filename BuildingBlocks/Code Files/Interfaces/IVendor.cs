@@ -17,6 +17,7 @@ namespace BuildingBlocks.Code_Files.Interfaces {
         string ContactName { get; set; }
         string Phone1AccountsReceivable { get; set; }
         PhoneType Phone1AccountsReceivableType { get; set; }
+        string CreatedBy { get; set; }
         bool UpdateEntity();
         List<IVendor> GetEntities(Int32 RowUID = -1);
         bool DeleteEntity(Int32 RowUID);
