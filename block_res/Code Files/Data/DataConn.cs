@@ -5,14 +5,14 @@ using System.Data.SqlClient;
 
 namespace block_res.Code_Files.Data {
 
-    internal static class DataConn {
+    public static class DataConn {
 
         private const string m_MSSQLConnStr = @"Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=WMS;Data Source=DESKTOP-PJ4CBH3\\SQLEXPRESS";
         private static SqlConnection m_MSSQLConnection = new SqlConnection(m_MSSQLConnStr);
         private static SqlDataReader m_MSSQLDataReader;
         private static SqlCommand m_MSSQLCommand;
         
-        internal static object GetDataCaller(CommandType CommandType, string CommandString, DataReturnType ReturnType, ArrayList ParmList) {
+        public static object GetDataCaller(CommandType CommandType, string CommandString, DataReturnType ReturnType, ArrayList ParmList) {
 
             object? Result = null;
 

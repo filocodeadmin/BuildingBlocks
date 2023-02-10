@@ -5,6 +5,8 @@ namespace block_res.Code_Files.Entity {
 
     public abstract class EntityBase {
 
+        public Int32 RowUID { get; set; } = -1;
+
         [Required, MinLength(2), MaxLength(50)]
         public string FirstName { get; set; } = "";
 

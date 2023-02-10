@@ -3,6 +3,7 @@
 namespace BuildingBlocks.Code_Files.Interfaces {
 
     internal interface IVendor {
+        Int32 RowUID { get; set; }
         string FirstName { get; set; }
         string LastName { get; set; }
         string Address1 { get; set; }
