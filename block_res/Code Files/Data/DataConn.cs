@@ -6,40 +6,39 @@ using System.Data.SqlClient;
 namespace block_res.Code_Files.Data {
 
     public static class DataConn {
-
-        private const string m_MSSQLConnStr = @"User ID=DESKTOP-PJ4CBH3\cferreira;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=WMS;Data Source=DESKTOP-PJ4CBH3\SQLEXPRESS";
-        private static SqlConnection m_MSSQLConnection = new SqlConnection(m_MSSQLConnStr);
-        private static SqlDataReader m_MSSQLDataReader;
-        private static SqlCommand m_MSSQLCommand;
-        
+      
         public static object GetDataCaller(CommandType CommandType, string CommandString, DataReturnType ReturnType, ArrayList ParmList) {
 
-            object? Result = null;
+        const string MSSQLConnStr = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=WMS;Data Source=DESKTOP-PJ4CBH3\SQLEXPRESS";
+        SqlConnection MSSQLConnection = new SqlConnection(MSSQLConnStr);
+        SqlDataReader MSSQLDataReader = null;
+        SqlCommand MSSQLCommand;
+        object? Result = null;
 
-            m_MSSQLConnection.ConnectionString = m_MSSQLConnStr;
-            m_MSSQLConnection.Open();
-            m_MSSQLCommand = new SqlCommand();
-            m_MSSQLCommand.Connection = m_MSSQLConnection;
-            m_MSSQLCommand.CommandType = CommandType;
-            m_MSSQLCommand.CommandTimeout = 60;
-            m_MSSQLCommand.CommandText = CommandString;
+            MSSQLConnection.ConnectionString = MSSQLConnStr;
+            MSSQLConnection.Open();
+            MSSQLCommand = new SqlCommand();
+            MSSQLCommand.Connection = MSSQLConnection;
+            MSSQLCommand.CommandType = CommandType;
+            MSSQLCommand.CommandTimeout = 60;
+            MSSQLCommand.CommandText = CommandString;
             for (int i = 0; i < ParmList.Count; ++i) {
-                _ = m_MSSQLCommand.Parameters.Add((SqlParameter)ParmList[i]);
+                _ = MSSQLCommand.Parameters.Add((SqlParameter)ParmList[i]);
             }
 
             switch (ReturnType) {
                 case DataReturnType.DataReader:
-                    Result = m_MSSQLCommand.ExecuteReader();
+                    Result = MSSQLCommand.ExecuteReader();
                     break;
                 case DataReturnType.DataScalar:
-                    Result = m_MSSQLCommand.ExecuteScalar();
+                    Result = MSSQLCommand.ExecuteScalar();
                     break;
                 case DataReturnType.DataNonReader:
-                    m_MSSQLCommand.ExecuteNonQuery();
+                    MSSQLCommand.ExecuteNonQuery();
                     break;
             }
 
-            return m_MSSQLDataReader;
+            return Result;
         }
         
 

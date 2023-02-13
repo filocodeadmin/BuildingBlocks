@@ -20,8 +20,12 @@ namespace BuildingBlocks.Code_Files.Data {
                 new SqlParameter("nvarCreatedBy", CustomerProfile.CreatedBy)
             };
 
-            object Reader = DataConn.GetDataCaller(CommandType.StoredProcedure, "UpdateCustomerSp", DataReturnType.DataReader, Parms);
-
+            object Reader = (SqlDataReader)DataConn.GetDataCaller(CommandType.StoredProcedure, "UpdateCustomerSp", DataReturnType.DataReader, Parms);
+            if ((SqlDataReader)Reader != null) {
+                if (((SqlDataReader)Reader).RecordsAffected > 0) {
+                    Result = true;
+                }
+            }
 
             return Result;
         }

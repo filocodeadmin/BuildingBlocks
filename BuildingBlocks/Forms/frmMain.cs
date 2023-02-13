@@ -71,6 +71,7 @@ namespace BuildingBlocks {
 
             CustomerProfile.FirstName = this.txtFirstName.Text;
             CustomerProfile.LastName = this.txtLastName.Text;
+            CustomerProfile.CreatedBy = "filocodeadmin";
             Result = CustomerProfile.UpdateCustomer();
             if (!Result) {
                 //didn't save
