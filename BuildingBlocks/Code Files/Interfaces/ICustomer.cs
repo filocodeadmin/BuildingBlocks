@@ -21,6 +21,9 @@ namespace BuildingBlocks.Code_Files.Interfaces {
         string EmergencyPostalCode { get; set; }
         string EmergencyPhone1 { get; set; }
         string CreatedBy { get; set; }
+        DateTime CreatedStamp { get; set; }
+        string UpdatedBy { get; set; }
+        DateTime UpdatedStamp { get; set; }
         public PhoneType EmergencyPhone1Type { get; set; }
         bool UpdateCustomer();
         List<ICustomer> GetCustomers(Int32 RowUID = -1);

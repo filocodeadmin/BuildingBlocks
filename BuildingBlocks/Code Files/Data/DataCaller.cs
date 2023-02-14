@@ -5,6 +5,7 @@ using block_res.Code_Files.Data;
 using System.Collections;
 using System.Data;
 using BuildingBlocks.Code_Files.BusinessClasses;
+using block_res.Code_Files;
 
 namespace BuildingBlocks.Code_Files.Data {
         
@@ -42,7 +43,11 @@ namespace BuildingBlocks.Code_Files.Data {
                     "GetCustomersSp", DataReturnType.DataReader, Parms)) {
                 while (Reader.Read()) {
                     CustomerProfile = new Customer();
+                    CustomerProfile.RowUID = Reader.GetValue(Reader.GetOrdinal("row_uid")) as Int32? ?? -1;
                     CustomerProfile.FirstName = Reader.GetValue(Reader.GetOrdinal("first_name")) as string ?? "";
+                    CustomerProfile.LastName = Reader.GetValue(Reader.GetOrdinal("last_name")) as string ?? "";
+                    CustomerProfile.UpdatedBy = Reader.GetValue(Reader.GetOrdinal("updated_by")) as string ?? "";
+                    CustomerProfile.UpdatedStamp = Reader.GetValue(Reader.GetOrdinal("updated_date_time")) as DateTime? ?? default;
                     ResultList.Add(CustomerProfile);
                 }
             }
@@ -57,62 +62,12 @@ namespace BuildingBlocks.Code_Files.Data {
                 new SqlParameter("intRowUID", RowUID)
             };
 
-            object Reader = DataConn.GetDataCaller(CommandType.StoredProcedure, "DeleteCustomerSp", DataReturnType.DataReader, Parms);
-
-
-            return Result;
-        }
-
-        internal bool UpdateVendorProfile(IVendor VendorProfile) {
-
-            bool Result = false;
-
-
-
-            return Result;
-        }
-
-        internal List<IVendor> GetVendorList(Int32 RowUID = -1) {
-
-            List<IVendor> ResultList = new List<IVendor>();
-
-
-
-            return ResultList;
-        }
-
-        internal bool DeleteVendorProfile(Int32 RowUID) {
-
-            bool Result = false;
-
-
-
-            return Result;
-        }
-
-        internal bool UpdateSalespersonProfile(ISalesperson SalespersonProfile) {
-
-            bool Result = false;
-
-
-
-            return Result;
-        }
-
-        internal List<ISalesperson> GetSalespersonList(Int32 RowUID = -1) {
-
-            List<ISalesperson> ResultList = new List<ISalesperson>();
-
-
-
-            return ResultList;
-        }
-
-        internal bool DeleteSalespersonProfile(Int32 RowUID) {
-
-            bool Result = false;
-
-
+            object Reader = (SqlDataReader)DataConn.GetDataCaller(CommandType.StoredProcedure, "DeleteCustomerSp", DataReturnType.DataReader, Parms);
+            if ((SqlDataReader)Reader != null) {
+                if (((SqlDataReader)Reader).RecordsAffected > 0) {
+                    Result = true;
+                }
+            }
 
             return Result;
         }

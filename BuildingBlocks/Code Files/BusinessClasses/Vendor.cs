@@ -4,28 +4,32 @@ using BuildingBlocks.Code_Files.Interfaces;
 
 namespace BuildingBlocks.Code_Files.BusinessClasses {
 
-    internal class Vendor : VendorBase, IVendor {
+    internal class Vendor : VendorBase //, IVendor 
+        {
 
         public string CreatedBy { get; set; } = "";
+        public DateTime CreatedStamp { get; set; } = default;
+        public string UpdatedBy { get; set; } = "";
+        public DateTime UpdatedStamp { get; set; } = default;
 
         internal Vendor() {
             //business logic can be here or in the base
         }
 
-        bool IVendor.UpdateEntity() {
-            //add a number of different checks to properties prior to update
-            CleanVendor();
-            WildcardHandle();
-            return new DataCaller().UpdateVendorProfile(this);
-        }
+        //bool IVendor.UpdateEntity() {
+        //    //add a number of different checks to properties prior to update
+        //    CleanVendor();
+        //    WildcardHandle();
+        //    return new DataCaller().UpdateVendorProfile(this);
+        //}
 
-        List<IVendor> IVendor.GetEntities(Int32 RowUID = -1) {
-            return new DataCaller().GetVendorList(RowUID);
-        }
+        //List<IVendor> IVendor.GetEntities(Int32 RowUID = -1) {
+        //    return new DataCaller().GetVendorList(RowUID);
+        //}
 
-        bool IVendor.DeleteEntity(Int32 RowUID) {
-            return new DataCaller().DeleteVendorProfile(RowUID);
-        }
+        //bool IVendor.DeleteEntity(Int32 RowUID) {
+        //    return new DataCaller().DeleteVendorProfile(RowUID);
+        //}
 
     }
 
