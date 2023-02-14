@@ -9,7 +9,7 @@ namespace block_res.Code_Files.Data {
       
         public static object GetDataCaller(CommandType CommandType, string CommandString, DataReturnType ReturnType, ArrayList ParmList) {
 
-        const string MSSQLConnStr = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=WMS;Data Source=DESKTOP-PJ4CBH3\SQLEXPRESS";
+        const string MSSQLConnStr = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=WMS;Data Source=<your pc or remote>\SQLEXPRESS";
         SqlConnection MSSQLConnection = new SqlConnection(MSSQLConnStr);
         SqlDataReader MSSQLDataReader = null;
         SqlCommand MSSQLCommand;
