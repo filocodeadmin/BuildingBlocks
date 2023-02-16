@@ -4,7 +4,7 @@ This project provides a starter code base for developers that would like to use 
 
 ## Technology
 - C#.NET
-- MS SQL Server 2022
+- MS SQL Server 2022 (Express Used)
 - Microsoft Visual Studio 2022
 
 ## Functionality
