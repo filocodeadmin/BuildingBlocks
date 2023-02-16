@@ -5,20 +5,19 @@ using block_res.Code_Files.Data;
 using System.Collections;
 using System.Data;
 using BuildingBlocks.Code_Files.BusinessClasses;
-using block_res.Code_Files;
 
 namespace BuildingBlocks.Code_Files.Data {
         
     internal class DataCaller {
 
-        internal bool UpdateCustomerProfile(ICustomer CustomerProfile) {
+        internal bool UpdateCustomerProfile(IEntity CustomerProfile) {
 
             bool Result = false;
             ArrayList Parms = new ArrayList() { 
                 new SqlParameter("intRowUID", CustomerProfile.RowUID),
                 new SqlParameter("nvarFirstName", CustomerProfile.FirstName),
                 new SqlParameter("nvarLastName", CustomerProfile.LastName),
-                new SqlParameter("nvarCreatedBy", CustomerProfile.CreatedBy)
+                new SqlParameter("nvarCreatedBy", ((Customer)CustomerProfile).CreatedBy)
             };
 
             object Reader = (SqlDataReader)DataConn.GetDataCaller(CommandType.StoredProcedure, "UpdateCustomerSp", DataReturnType.DataReader, Parms);
@@ -31,10 +30,10 @@ namespace BuildingBlocks.Code_Files.Data {
             return Result;
         }
 
-        internal List<ICustomer> GetCustomerList(Int32 RowUID = -1) { 
+        internal List<IEntity> GetCustomerList(Int32 RowUID = -1) { 
         
-            List<ICustomer> ResultList = new List<ICustomer>();
-            ICustomer CustomerProfile;
+            List<IEntity> ResultList = new List<IEntity>();
+            IEntity CustomerProfile;
             ArrayList Parms = new ArrayList() {
                 new SqlParameter("intRowUID", RowUID)
             };
@@ -46,8 +45,8 @@ namespace BuildingBlocks.Code_Files.Data {
                     CustomerProfile.RowUID = Reader.GetValue(Reader.GetOrdinal("row_uid")) as Int32? ?? -1;
                     CustomerProfile.FirstName = Reader.GetValue(Reader.GetOrdinal("first_name")) as string ?? "";
                     CustomerProfile.LastName = Reader.GetValue(Reader.GetOrdinal("last_name")) as string ?? "";
-                    CustomerProfile.UpdatedBy = Reader.GetValue(Reader.GetOrdinal("updated_by")) as string ?? "";
-                    CustomerProfile.UpdatedStamp = Reader.GetValue(Reader.GetOrdinal("updated_date_time")) as DateTime? ?? default;
+                    ((Customer)CustomerProfile).UpdatedBy = Reader.GetValue(Reader.GetOrdinal("updated_by")) as string ?? "";
+                    ((Customer)CustomerProfile).UpdatedStamp = Reader.GetValue(Reader.GetOrdinal("updated_date_time")) as DateTime? ?? default;
                     ResultList.Add(CustomerProfile);
                 }
             }
@@ -68,6 +67,58 @@ namespace BuildingBlocks.Code_Files.Data {
                     Result = true;
                 }
             }
+
+            return Result;
+        }
+
+        internal bool UpdateSalespersonProfile(IEntity SalespersonProfile) {
+
+            return true;
+        }
+
+        internal List<IEntity> GetSalespersonList(Int32 RowUID = -1) {
+
+            List<IEntity> ResultList = new List<IEntity>();
+            IEntity SalespersonProfile;
+            ArrayList Parms = new ArrayList() {
+                new SqlParameter("intRowUID", RowUID)
+            };
+
+            return ResultList;
+        }
+
+        internal bool DeleteSalespersonProfile(Int32 RowUID) {
+
+            bool Result = false;
+            ArrayList Parms = new ArrayList() {
+                new SqlParameter("intRowUID", RowUID)
+            };
+
+            return Result;
+        }
+
+        internal bool UpdateVendorProfile(IEntity VendorProfile) {
+
+            return true;
+        }
+
+        internal List<IEntity> GetVendorList(Int32 RowUID = -1) {
+
+            List<IEntity> ResultList = new List<IEntity>();
+            IEntity VendorProfile;
+            ArrayList Parms = new ArrayList() {
+                new SqlParameter("intRowUID", RowUID)
+            };
+
+            return ResultList;
+        }
+
+        internal bool DeleteVendorProfile(Int32 RowUID) {
+
+            bool Result = false;
+            ArrayList Parms = new ArrayList() {
+                new SqlParameter("intRowUID", RowUID)
+            };
 
             return Result;
         }

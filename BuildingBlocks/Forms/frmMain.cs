@@ -62,13 +62,13 @@ namespace BuildingBlocks {
 
         private void UpdateCustomer() {
 
-            ICustomer CustomerProfile = new Customer();
+            IEntity CustomerProfile = new Customer();
             bool Result = false;
 
             CustomerProfile.FirstName = this.txtFirstName.Text;
             CustomerProfile.LastName = this.txtLastName.Text;
-            CustomerProfile.CreatedBy = "filocodeadmin";
-            Result = CustomerProfile.UpdateCustomer();
+            ((Customer)CustomerProfile).CreatedBy = "filocodeadmin";
+            Result = CustomerProfile.Update();
             if (!Result) {
                 //didn't save
             }
@@ -88,10 +88,10 @@ namespace BuildingBlocks {
 
         private void LoadDataDefaults() {
 
-            ICustomer CustomerGet = new Customer();
-            List<ICustomer> CustomerList = new List<ICustomer>();
+            IEntity Customer = new Customer();
+            List<IEntity> CustomerList = new List<IEntity>();
 
-            CustomerList = CustomerGet.GetCustomers();
+            CustomerList = Customer.Get();
 
             this.lstvwCustomerList.SuspendLayout();
             this.lstvwCustomerList.Items.Clear();
@@ -131,11 +131,11 @@ namespace BuildingBlocks {
 
         private void DeleteCustomer() {
 
-            ICustomer CustomerProfile = new Customer();
+            IEntity CustomerProfile = new Customer();
             bool Result = false;
             Int32 SelectedRowUID = Int32.Parse(this.lstvwCustomerList.SelectedItems[0].Text);
 
-            Result = CustomerProfile.DeleteCustomer(SelectedRowUID);
+            Result = CustomerProfile.Delete(SelectedRowUID);
             if (!Result) {
                 //didn't delete
             }

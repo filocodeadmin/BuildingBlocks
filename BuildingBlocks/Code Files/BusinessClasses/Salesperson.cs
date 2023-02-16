@@ -4,8 +4,7 @@ using BuildingBlocks.Code_Files.Interfaces;
 
 namespace BuildingBlocks.Code_Files.BusinessClasses {
 
-    internal class Salesperson : SalespersonBase //, ISalesperson 
-        {
+    internal class Salesperson : SalespersonBase , IEntity {
 
         public string CreatedBy { get; set; } = "";
         public DateTime CreatedStamp { get; set; } = default;
@@ -16,20 +15,20 @@ namespace BuildingBlocks.Code_Files.BusinessClasses {
             //business logic can be here or in the base
         }
 
-        //bool ISalesperson.UpdateEntity() {
-        //    //add a number of different checks to properties prior to update
-        //    CleanSalesperson();
-        //    WildcardHandle();
-        //    return new DataCaller().UpdateSalespersonProfile(this);
-        //}
+        bool IEntity.Update() {
+            //add a number of different checks to properties prior to update
+            CleanSalesperson();
+            WildcardHandle();
+            return new DataCaller().UpdateSalespersonProfile(this);
+        }
 
-        //List<ISalesperson> ISalesperson.GetEntities(Int32 RowUID = -1) {
-        //    return new DataCaller().GetSalespersonList(RowUID);
-        //}
+        List<IEntity> IEntity.Get(int RowUID) {
+            return new DataCaller().GetSalespersonList(RowUID);
+        }
 
-        //bool ISalesperson.DeleteEntity(Int32 RowUID) {
-        //    return new DataCaller().DeleteSalespersonProfile(RowUID);
-        //}
+        bool IEntity.Delete(int RowUID) {
+            return new DataCaller().DeleteSalespersonProfile(RowUID);
+        }
 
     }
 
