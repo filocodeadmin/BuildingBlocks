@@ -11,7 +11,7 @@ This project provides a starter code base for programmers that would like to use
 - Base & abstract classes
 - Interfaces
 - Tiered - UI | Business | Data
-- Database tables & procedures - Get, Update, Delete
+- Database tables & procedures - Get, Create/Update, Delete
 
 ## Uses
 - You can download it for personal use
