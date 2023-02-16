@@ -1,0 +1,23 @@
+# BuildingBlocks
+
+---
+permalink: /buildingblocks/
+title: Application Starter Build
+---
+
+Every repo contains a README, which is a document that is intended to explain, at first glance, what a project does and how to install or test the code.
+
+READMEs are really important because they’re the first item a user will see when encountering your code. Creating a readable README ensures that your co-workers and the public will be able to understand the intention of your program, install the software, and fork and adapt your projects.
+
+
+## A description of what the project is for.
+
+This should answer a short list of basic questions:
+
+* **What is this repo or project?**
+
+This project provides both a means of content to present personal capabilities and also a starter project for programmers that would like to use it as a foundation for larger projects.  The code isn't overly complicated, but it's more of the structure that's important.
+
+* **How does it work?**
+* **Who will use this repo or project?**
+* **What is the goal of this project?**  
