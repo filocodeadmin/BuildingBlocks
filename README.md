@@ -1,4 +1,4 @@
-# BuildingBlocks
+# Building Blocks
 
 This project provides a starter code base for developers that would like to use it as a foundation for larger projects.  Updates will be made over time to add general functionality.  The project is a very simple code base, but it's more of the structure that's important.
 
