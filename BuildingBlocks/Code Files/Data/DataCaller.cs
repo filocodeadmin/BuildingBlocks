@@ -61,9 +61,9 @@ namespace BuildingBlocks.Code_Files.Data {
                 new SqlParameter("intRowUID", RowUID)
             };
 
-            object Reader = (SqlDataReader)DataConn.GetDataCaller(CommandType.StoredProcedure, "DeleteCustomerSp", DataReturnType.DataReader, Parms);
-            if ((SqlDataReader)Reader != null) {
-                if (((SqlDataReader)Reader).RecordsAffected > 0) {
+            object Reader = DataConn.GetDataCaller(CommandType.StoredProcedure, "DeleteCustomerSp", DataReturnType.DataNonReader, Parms);
+            if (Reader != null) {
+                if ((Int32)Reader > 0) {
                     Result = true;
                 }
             }

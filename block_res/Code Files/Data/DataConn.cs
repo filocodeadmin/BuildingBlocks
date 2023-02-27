@@ -34,7 +34,7 @@ namespace block_res.Code_Files.Data {
                     Result = MSSQLCommand.ExecuteScalar();
                     break;
                 case DataReturnType.DataNonReader:
-                    MSSQLCommand.ExecuteNonQuery();
+                    Result = MSSQLCommand.ExecuteNonQuery();
                     break;
             }
 
